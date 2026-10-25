@@ -1,8 +1,8 @@
- # ==========1 Student Exam Eligibility AND IF-ELSE AVERAGE ===============
+# ==========1 Student Exam Eligibility AND IF-ELSE AVERAGE ===============
 #A school allows a student to pass only when academic performance and attendance are both acceptable.
 #Take marks in Maths, Science and English and calculate the average.
 math_marks = int(input("Enter math marks: "))
-science_Marks = int(input("Enter science marks: "))
+science_Marks = int(input('Enter science marks: '))
 english_Marks = int(input("Enter english marks: "))
 #Take attendance percentage.
 attendance_percentage = float(input("Enter attendance percentage: "))
