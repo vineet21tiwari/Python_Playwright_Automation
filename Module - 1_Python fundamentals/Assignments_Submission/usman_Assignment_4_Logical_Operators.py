@@ -110,13 +110,13 @@ elif (Visitors_age > 12 and Visitors_Hight < 140):
     print("Hight requirement not Met")
 else: print("Ride# allowed only for the fully valid case Visitors")
 
-Online Store Discount Access
-OR
-IF-ELSE
-DISCOUNT
-A shopper receives a 10 %discount
-if the order is large enough or if they are a premium member
-Take order amount.Take premium-member status as yes or no.
+#Online Store Discount Access
+#OR
+#IF-ELSE
+#DISCOUNT
+#A shopper receives a 10 %discount
+#if the order is large enough or if they are a premium member
+#Take order amount.Take premium-member status as yes or no.
 
 Order_amount = float(input("Enter Order Amount: "))
 Customers_status = input("Enter if Customer is  Premium Member: "))
