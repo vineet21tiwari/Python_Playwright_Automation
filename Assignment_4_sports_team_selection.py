@@ -19,4 +19,4 @@ if (race_time <= 14 or endurance_score >= 80) and attendance_percentage >= 75:
 elif (race_time <= 14 or endurance_score >= 80) and attendance_percentage < 75:
     print("Performance qualified - attendance insufficient")
 else:
-    print("Not selected")
+    print("Not Selected")
