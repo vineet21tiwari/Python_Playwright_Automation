@@ -17,3 +17,4 @@ final_bill = subtotal - discount
 print(f"Subtotal: ${subtotal:.2f}")
 print(f"Discount amount: ${discount:.2f}")
 print(f"Final bill: ${final_bill:.2f}")
+
