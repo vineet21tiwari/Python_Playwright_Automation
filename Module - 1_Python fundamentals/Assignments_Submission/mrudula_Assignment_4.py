@@ -163,6 +163,156 @@ elif (race_time <=14 or endurance_score>=80) and attendance_percentage <75:
 else:
     print("Student is Not Qualified")
 
+#==================================9.Blocked Account Access==================================
+#A user may access an application only if the password is correct and the account is not blocked.
+#Store the correct password in a variable.
+correct_password = 'Python123!'
+#Take the user's password.
+password= input("Enter password: ")
+#Take blocked status as True or False in the program.
+blocked_status = input("is account Blocked (True/False): ")
+#Allow access when the password matches and not is_blocked
+if password == correct_password and blocked_status == 'False':
+    print("Access Granted")
+elif password == correct_password and blocked_status == 'True':
+    print("Contact Support")
+else:
+    print("Password is incorrect")
+
+
+#======================== 10 Library Book Issue Check===============================
+#A library issues a book only when the member is active and does not have an overdue book.
+#Take member-active status and overdue-book status.
+member_active= input("Enter member status (Yes/No): ")
+overdue_book_status=input("Enter overdue book status (Yes/No): ")
+#Issue the book if member is active and the user does not have an overdue book.
+if member_active == 'Yes' and not overdue_book_status == 'Yes':
+    print("Book Issued")
+#If membership is inactive, print Renew membership first.
+elif member_active == 'No':
+    print("Renew membership first.")
+
+#If membership is active but overdue exists, print Return overdue book first.
+elif member_active == 'Yes' and overdue_book_status =='Yes':
+    print("Return overdue book")
+
+
+#============11. Movie Ticket Age Rule=================================
+#A cinema allows entry to an age-restricted movie under two possible paths.
+#Take age, whether the person has valid ID, and whether a guardian is present.
+age=int(input("Enter age: "))
+valid_ID= input("Enter if Person has Valid ID(Yes/No): ")
+guardian= input("Enter Guardian(Yes/No): ")
+#Allow normal entry when age is at least 18 and valid ID is available.
+#Also allow a 16-17 year old when a guardian is present.
+#Use parentheses to combine the two valid paths clearly.
+
+if (age >=18 and valid_ID == 'Yes') or (age >=16 and age <18 and guardian =='Yes'):
+    print("Entry is Allowed")
+else:
+    print("You are not Eligible for this Movie")
+
+
+#===================================12.Employee Work-from-Home Eligibility=========================
+# A company allows work from home based on role, performance and security restrictions.
+# Take employee role, performance rating and whether the employee is under a security restriction
+employee_role=input("Enter Employee Role(Developer/Analyst/PM/Trader):")
+performance_rating= int(input("Enter Performance Rating:"))
+security_restriction= input("Enter Security Restriction(Yes/No):")
+
+# Allow WFH when role is developer or analyst, performance rating is at least 3, and the employee is not restricted.
+if (employee_role == 'Developer' or employee_role == 'Analyst') and performance_rating >= '3' and not security_restriction == 'Yes':
+    print("Employee is allowed to Work from Home")
+
+# If role and performance qualify but restriction is active, print WFH blocked by security restriction.
+elif (employee_role == 'Developer' or employee_role == 'Analyst') and performance_rating >= '3' and  security_restriction == 'Yes':
+    print("WFH is blocked due to security restriction")
+# Otherwise print WFH not eligible.
+else:
+    print("Employee is Not eligible to Work from Home")
+# Use parentheses around the role alternatives.
+
+
+#===============================13.Hospital Appointment Priority============================
+#A clinic assigns priority based on age, temperature and emergency status.
+#Take patient age, temperature and emergency status.
+#Ensure the high-priority rule is checked before the lower-priority rule.
+patient_age=int(input("Enter Patient age:"))
+temperature= float(input("Enter temperature:"))
+emergency_status=input("Enter Emergency status(Yes/No):")
+#Assign High Priority if emergency is yes or temperature is 103 or above.
+if emergency_status == 'Yes' or temperature >= 103:
+    priority="High Priority"
+#Assign Priority if age is 65 or above and temperature is at least 100.
+elif patient_age>= 65 and temperature >=100:
+    priority=" Priority"
+else:
+    #Otherwise assign Normal Queue.
+    priority="Normal Queue"
+# Print all patient details and the assigned category.
+print("Patient Age:", patient_age)
+print("Patient Temperature:", temperature)
+print("Patient Priority:", priority)
+
+#=================================14.Scholarship Decision System===============================
+#A scholarship program evaluates academic performance, family income and sports achievement
+#Take three subject marks and calculate percentage
+math_marks=int(input("Enter math marks:"))
+science_marks=int(input("Enter science marks:"))
+english_marks=int(input("Enter english marks:"))
+total_marks=math_marks+science_marks+english_marks
+percentage_marks=total_marks/3
+#Take annual family income and sports-achievement status.
+family_income=int(input("Enter family income:"))
+sports_ach_status=input("Enter sports achievement status (Yes/No):")
+#Give Full Scholarship if percentage is at least 90 and family income is at most 500,000.
+if family_income <= 500000 and percentage_marks>=90:
+    scholarship_status='Full Scholarship'
+    #Give Merit Scholarship if percentage is at least 85 or sports achievement is yes.
+elif percentage_marks>=85 or sports_ach_status == 'Yes':
+    scholarship_status='Merit Scholarship'
+#Otherwise print Not eligible for scholarship
+else:
+    scholarship_status='Not eligible for scholarship'
+#Print percentage rounded to 2 decimal places along with the final decision.
+print("Percentage of the Marks:",round(percentage_marks,2))
+print("Your Scholarship Status:",scholarship_status)
+
+
+#=============================15.Airport Boarding Eligibility System=============================
+#Build a simplified airport boarding checker that combines identity, ticket, baggage and special-assistance rules.
+#Take passenger name, age, ticket status, valid-ID status, baggage weight and special-assistance status.
+passenger_name= input("Enter Passenger Name:")
+age= int(input("Enter age:"))
+ticket_status=input("Enter ticket status (Valid/NotValid):")
+valid_ID= input("Enter Valid ID(Yes/No):")
+baggage_weight= float(input("Enter baggage Weight:"))
+special_assistance_status=input("Enter special assistance status (Yes/No):")
+guardian_status = input("Is a Guardian Present? (Yes/No): ")
+#If ticket is not valid, deny boarding regardless of other values.
+if not ticket_status == 'Valid':
+    message ="Deny Boarding due to InValid Ticket"
+#A passenger below 18 may board when ticket is valid and a guardian is present.
+elif age <18 and ticket_status == 'Valid' and guardian_status == 'Yes' and valid_ID == 'Yes':
+    message= "passenger may board with Guardian"
+
+#A normal adult passenger may board only when ticket is valid and ID is valid and baggage is at most 20 kg.
+elif age >=18 and ticket_status == 'Valid' and valid_ID == 'Yes' and baggage_weight <=20:
+    message="passenger may board"
+
+#If baggage exceeds 20 kg but all other normal-adult requirements pass, print Pay excess baggage fee before boarding.
+elif baggage_weight >20 and ticket_status == 'Valid' and valid_ID == 'Yes':
+   message ="Please Pay excess baggage fee before boarding"
+
+    #If special assistance is requested and boarding is otherwise allowed, print an additional assistance message.
+if special_assistance_status == 'Yes' and ('may board' in message  or 'may board with Guardian' in message):
+    print("Special Assistance is on the way for Boarding")
+    #Print a final boarding summary containing passenger name, baggage weight and decision.
+
+print("Passenger Name:",passenger_name)
+print("Baggage Weight:",baggage_weight)
+print("Final Decision Message  :",message)
+
 
 
 
