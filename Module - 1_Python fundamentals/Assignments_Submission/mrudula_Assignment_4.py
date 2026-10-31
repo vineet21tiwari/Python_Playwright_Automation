@@ -58,7 +58,7 @@ else:
      print("Login failed")
 
  # 5.Add a second condition requiring account_active == True .
- account_active = input("Enter account active(True/False): ")
+account_active = input("Enter account active(True/False): ")
 if username == 'mmutyala' and pin == '1234' and account_active == True:
      print("Login successful and account is active")
  # 6.If credentials are correct but the account is inactive, print a separate message using
@@ -93,6 +93,7 @@ else:
 order_amount = float(input("Enter order amount: "))
 # 2. Take premium-member status as yes or no .
 premium_member_status = input("Enter premium member status(Yes/No): ")
+discount_bill = 0
 #6. Add an elif : if order amount is at least 10,000 and the member is premium, give 15% instead
 if order_amount >= 10000 and premium_member_status == 'Yes':
     print("Customer is premium member and eligible for a 15% discount")
@@ -104,7 +105,7 @@ elif (order_amount>=5000 and order_amount<9999) or premium_member_status == 'Yes
 # 4. Otherwise keep the original bill.
 elif order_amount <4999 or premium_member_status == 'No':
     discount_bill = 0
-    print("You are not Eligibile for any discount")
+    print("You are not Eligible for any discount")
 
 # 5.Print original bill, discount amount and final bill.
 final_bill = order_amount - discount_bill
@@ -221,11 +222,11 @@ performance_rating= int(input("Enter Performance Rating:"))
 security_restriction= input("Enter Security Restriction(Yes/No):")
 
 # Allow WFH when role is developer or analyst, performance rating is at least 3, and the employee is not restricted.
-if (employee_role == 'Developer' or employee_role == 'Analyst') and performance_rating >= '3' and not security_restriction == 'Yes':
+if (employee_role == 'Developer' or employee_role == 'Analyst') and performance_rating >= 3 and not security_restriction == 'Yes':
     print("Employee is allowed to Work from Home")
 
 # If role and performance qualify but restriction is active, print WFH blocked by security restriction.
-elif (employee_role == 'Developer' or employee_role == 'Analyst') and performance_rating >= '3' and  security_restriction == 'Yes':
+elif (employee_role == 'Developer' or employee_role == 'Analyst') and performance_rating >= 3 and  security_restriction == 'Yes':
     print("WFH is blocked due to security restriction")
 # Otherwise print WFH not eligible.
 else:
@@ -303,9 +304,11 @@ elif age >=18 and ticket_status == 'Valid' and valid_ID == 'Yes' and baggage_wei
 #If baggage exceeds 20 kg but all other normal-adult requirements pass, print Pay excess baggage fee before boarding.
 elif baggage_weight >20 and ticket_status == 'Valid' and valid_ID == 'Yes':
    message ="Please Pay excess baggage fee before boarding"
+else:
+    message ="Deny Boarding"
 
     #If special assistance is requested and boarding is otherwise allowed, print an additional assistance message.
-if special_assistance_status == 'Yes' and ('may board' in message  or 'may board with Guardian' in message):
+if special_assistance_status == 'Yes' and ('may board' in  message  or 'may board with Guardian' in message):
     print("Special Assistance is on the way for Boarding")
     #Print a final boarding summary containing passenger name, baggage weight and decision.
 
