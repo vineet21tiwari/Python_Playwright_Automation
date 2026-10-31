@@ -421,3 +421,23 @@ elif member_status != "Yes" or (order_amount >= 499 and order_amount < 999):
 else:
     print("Dejivery fee of #80 is Charged")
 
+e_mail = input("Enter a emailr : "))
+if '@' in e_mail and '.' in e_mail:
+    then print("That email is valid")
+else: print("That email is not valid")
+
+course_tojoin = input("Enter course to join: ")
+course_available = ['c','c++','python','java','sql']
+if course_tojoin in course_available:
+    print("That course is available")
+else: print("That course is not available")
+
+
+student_subjects=input("Enter student subject: ")
+student_marks=input("Enter student marks in subject: ")
+subjects_available = ['math','english','science',]
+student_attendence_percent= input("Enter student attendance percentage: ")
+
+if student_subjects in subjects_available: and student_marks>=40 and student_attendence_percent>=75:
+  print("That subject is available and student is passed")
+else: print("That subject is not eligible")
