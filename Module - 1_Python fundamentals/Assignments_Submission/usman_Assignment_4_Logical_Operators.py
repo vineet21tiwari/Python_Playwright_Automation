@@ -119,11 +119,11 @@ else: print("Ride# allowed only for the fully valid case Visitors")
 # Take order amount.Take premium-member status as yes or no.
 
 Order_amount = float(input("Enter Order Amount: "))
-Customers_status = input("Enter if Customer is  Premium Member: "))
+Customers_status = input("Enter if Customer is  Premium Member: ")
 if Customers_status == "Yes" or Order_amount > 10000:
     print("Customer is Premium Member")
     finel_cost = (Order_amount - Order_amount*0.15)
-else finel_cost = (Order_amount - Order_amount*0.10)
+else: finel_cost = (Order_amount - Order_amount*0.10)
 
 # 6 Emergency Entry Permission
 # OR
