@@ -1,5 +1,7 @@
 #============================1.Smart course Registration============================
 #1.. Create available_courses = ["python", "java", "sql", "playwright"].
+from functools import total_ordering
+
 available_courses = ["python", "java", "sql", "playwright"]
 #2. Take course name, course fee and amount already paid from the user.
 course_name= input("Enter course name: ")
@@ -110,3 +112,136 @@ if product_name not in restricted_items and total_quantity > 0 and box_capacity 
 #6. If product is restricted, print Shipment blocked.
 elif product_name in restricted_items:
     print("Your Shipment is Blocked")
+
+
+
+#=========================== 6.Employee Bonus & Department Check===================================
+#A company awards a special bonus only to employees in selected departments who also satisfy performance rules.
+#1. Create eligible_departments = ["qa", "engineering", "devops"].
+eligible_departments = ["qa", "engineering", "devops"]#
+#2. Take department, monthly salary, performance score and years of experience.
+department=input("Enter the department : ").lower()
+monthly_salary = float(input("Enter monthly salary : "))
+performance_score= int(input("Enter performance : "))
+years_of_experience = int(input("Enter years of experience : "))
+#3. Calculate annual salary = monthly_salary * 12.
+annual_salary = monthly_salary * 12
+bonus=0
+#4. Give a 10% bonus if department is in eligible_departments AND performance >= 80 AND experience >= 2.
+if department in eligible_departments and performance_score >=80 and years_of_experience >=2:
+    bonus = annual_salary *10/100
+#5. Give a 5% bonus if department is eligible AND (performance >= 70 OR experience >= 5).
+elif department in eligible_departments and (performance_score>=70 or years_of_experience>=5):
+    bonus = annual_salary *5/100
+#6. Print annual salary, bonus amount and final annual compensation
+final_annual_compensation = annual_salary +bonus
+print("Your annual Salary:",annual_salary)
+print("Your Bonus:",bonus)
+print("Your Final Annual Salary:",round(final_annual_compensation,3))
+
+
+#==========================7 Secure Login & Role Access============================================
+#An application allows login only for recognized roles and must reject blocked usernames.
+#1. Create allowed_roles = ["admin", "manager", "tester"] and blocked_users = ["guest", "demo","temp"].
+allowed_roles = ["admin", "manager", "tester"]
+blocked_users = ["guest", "demo","temp"]
+#2. Take username, role and account balance from the user. Convert username and role to lowercase.
+username=input("Enter username : ").lower()
+role=input("Enter role : ").lower()
+account_balance=   float(input("Enter account balance : "))
+#3. Access is allowed only if role is in allowed_roles AND username is not in blocked_users AND balance >= 0.
+if role in allowed_roles and username not in blocked_users and account_balance>=0:
+    print("Your Access is allowed")
+#4. If username is blocked, print Blocked account.
+elif username  in blocked_users:
+    print("Your Access is Blocked")
+#5. If role is invalid, print Unauthorized role.
+elif role not in allowed_roles:
+    print("Unauthorized role")
+#6. Otherwise print the reason the access check failed
+else:
+    print("You are not in the List")
+
+
+#=============================8 Cinema Booking & Age Rules==================================
+# A cinema sells tickets for available movie categories, but some categories have age restrictions.
+#1. Create categories = ["comedy", "drama", "action", "horror"].
+categories = ["comedy", "drama", "action", "horror"]
+#2. Take category, age, ticket price, number of tickets and wallet balance.
+category=input("Enter category : ").lower()
+age=int(input("Enter age : "))
+ticket_price=float(input("Enter ticket price : "))
+number_of_tickets=float(input("Enter number of tickets : "))
+wallet_balance=float(input("Enter wallet balance : "))
+#3. Calculate total price.
+total_price= ticket_price*number_of_tickets
+#4. Booking is possible only if category is in categories AND wallet balance >= total price.
+#5. For horror, age must also be >= 18. For all other listed categories, age must be >= 13.
+if category not in categories:
+    print("Invalid Category")
+elif age<13:
+    print("Sorry you are not eligible for your age")
+elif category =='horror' and age <18:
+    print("You are not eligible to watch Horror movie for your age")
+elif wallet_balance<total_price:
+    print("You dont have enough Balance to Purchase tickets for Today",total_price)
+else:
+    print("Booking Confirmed")
+    print("Movie",category,"is purchased")
+    print("total price:",total_price)
+#====================================9.Delivery Zone & Free Shipping==================================
+#1. Create service_zones = ["madhapur", "gachibowli", "kondapur", "hitech city"].
+service_zones = ["madhapur", "gachibowli", "kondapur", "hitech city"]
+#2. Take delivery area, food total, delivery charge and premium-member status.
+delivery_area= input("Enter delivery area : ").lower()
+food_total= float(input("Enter food total : "))
+delivery_charge= float(input("Enter delivery charge : "))
+premium_member = input("Enter premium member(Yes/No) : ").lower()
+#3. Order can proceed only if area is in service_zones AND food total > 0.
+#4. Free delivery applies if food total >= 1000 OR premium member is yes.
+if delivery_area not in service_zones:
+    print("Sorry, delivery is not available in your area")
+elif delivery_area in service_zones and  premium_member=="yes" or food_total>=1000 :
+    delivery_charge=0
+#5. Otherwise add the delivery charge to the food total.
+elif delivery_area in service_zones and 0 < food_total < 999:
+    print("Your Delivery Charge for Today",delivery_charge)
+#6. Print serviceability, delivery fee charged and final payable amount.
+final_payable_amount = delivery_charge + food_total
+print("Your Order is deliver to ",delivery_area)
+print("Your Delivery Fee for Today",delivery_charge)
+print("Your Final Payable Amount:",final_payable_amount)
+
+
+#===========================10.Automation Lab Access - Master Challenge=====================================
+#A training lab grants access based on course enrollment, account status, attendance and available lab credits.
+#1. Create enrolled_courses = ["python", "playwright", "pytest"] and blocked_users = ["guest","suspended"].
+enrolled_courses = ["python", "playwright", "pytest"]
+blocked_users = ["guest","suspended"]
+#2. Take username, selected course, attendance, lab credits and number of sessions requested.
+username= input("Enter username : ").lower()
+selected_course= input("Enter course : ").lower()
+attendance= int(input("Enter attendance : "))
+lab_credits= int(input("Enter lab credits : "))
+noOfSessionsRequested= int(input("Enter number of sessions requested : "))
+#3. Each session costs 2 credits. Calculate required_credits = sessions * 2 and remaining_credits after booking.
+required_credits = noOfSessionsRequested * 2
+
+#4. Access is allowed only if course is in enrolled_courses AND username is not in blocked_users AND attendance >= 75 AND lab_credits >= required_credits.
+#5. If credits are insufficient, print how many more credits are needed.
+#6. If access is allowed, print remaining credits. Otherwise print every applicable reason for rejection.
+if selected_course not in enrolled_courses:
+    print("Invalid Course selection")
+if username in blocked_users:
+    print("Invalid Username")
+if attendance<75:
+    print("Insufficient Attendance")
+if lab_credits < required_credits:
+    extra_credits_needed=required_credits-lab_credits
+    print("You need more",extra_credits_needed,"Credits")
+if selected_course in enrolled_courses and username not in blocked_users and attendance >= 75 and lab_credits >= required_credits:
+    remaining_credits=lab_credits-required_credits
+    print("You are enrolled in course ", selected_course,"with Credits used ", required_credits,"and remaining credits left",remaining_credits)
+
+
+
