@@ -253,3 +253,141 @@ for i in range(1,6):
 #5.  At the end print total eligible and not-eligible counts
 print(eligible_count)
 print(not_eligible_count)
+
+
+#================18. Selective Range Challenge================
+
+num = int(input("Enter N: "))
+count = 0
+total = 0
+
+# 1. Loop from 1 to N
+for i in range(1, num + 1):
+
+    # 2. Select numbers divisible by 3 or 5, but not both
+    if (i % 3 == 0 or i % 5 == 0) and not (i % 3 == 0 and i % 5 == 0):
+
+        # 3. Print every selected number
+        print(i)
+
+        # 4. Count selected numbers and calculate their sum
+        count += 1
+        total += i
+
+# 5. Print final count and sum
+print("Total count:", count)
+print("Total sum:", total)
+
+#=======================19 while Warm-Up: 1 to 10==================================
+#Rewrite a basic counted loop using while.
+#1.  Start a variable at 1.
+num=1
+#2.  Use a while loop to print 1 through 10.
+while num<=10:
+    print(num)
+    #3.  Increase the variable correctly so the loop ends
+    num+=1
+
+#======================20.Countdown with while==================
+#.  Start at 10.
+number=10
+#2.Print 10 down to 1 using while.
+while number>0:
+#3.  Decrease the variable by 1 each iteration.
+    print(number)
+    number-=1
+#.  After the loop, print Go!.
+print("GO!")
+
+#============================21.Sum 1 to N Using while================================
+# 1.  Take N from the user.
+number = int(input("Enter a number: "))
+count = 0
+total = 0
+# 2.  Use while to calculate the sum from 1 to N.
+while count < number:
+    # 3.  Maintain both a counter variable and a total variable
+    count += 1
+    total += count
+
+# 4.  Print the final total
+print(total)
+
+
+#===============22 Multiplication Table with while==================
+
+#1.  Take a number from the user.
+num=int(input("Enter a Number:"))
+count=1
+#2.  Use while to print its table from 1 to 10.
+while count<=10:
+   total=num * count
+   print(num, "X", count, "=", total)
+#3.  Format the output like 6 x 4 = 24
+   count += 1
+
+
+#=================23.Even Numbers with while==================
+#1.   Print   all   even   numbers   from  2   to   50   using   while .
+count=2
+while count <=50:
+    count % 2==0
+# 2.  Start at 2 and increase by 2 each iteration.
+    print(count)
+    count+=2
+
+
+#================24.Password Until Correct=================
+# 1. Set the correct password to python123.
+password = "python123"
+
+# 2.  Ask the user for a password before entering the loop.
+userPwd = input("Enter user password: ")
+while password != userPwd:
+    print("Incorrect password")
+    userPwd = input("Try again: ")
+print(" Login Successful.")
+
+
+
+#====================25.ATM PIN - Maximum 3 Attempts=====================
+#1.  Set a correct PIN, for example 4321.
+correct_pin = 4321
+count = 1
+
+pin = int(input("Enter your PIN: "))
+
+#3.  Continue while attempts are below 3 and the PIN is incorrect.
+while pin != correct_pin and count < 3:
+    print("Incorrect PIN")
+    pin = int(input("Try Again: "))
+    count += 1
+#4.  After the loop, print Access Granted if correct; otherwise print Card Blocked.
+if pin == correct_pin:
+    print("Access Granted")
+else:
+    print("Card Blocked.")
+
+#===================26.Shopping Total Until 0=======================
+#1.  Ask the user to enter a product price.
+productPrice=float(input("Enter product price: "))
+#2.  Keep accepting prices while the entered price is not 0.
+total=0
+count=0
+average_price=0
+#3.  Add every non-zero price to a running total and count the number of products.
+while productPrice>0:
+    total+=productPrice
+    count+=1
+    productPrice = float(input("Enter product price: "))
+
+#5.  Print the number of products, total amount and average price.
+print(count)
+print(total)
+if count>0:
+    average_price= total/count
+    print(average_price)
+else:
+    print("No Products Found")
+#4.  When the user enters 0, stop the loop.
+#6.  Handle the case where the first entered value is 0 without dividing by zero
