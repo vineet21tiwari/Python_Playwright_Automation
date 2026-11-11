@@ -183,7 +183,7 @@ else:
         print("Access denied. User is blocked.")
     if attendance < 75:
         print("Access denied. Attendance is below 75%.")
-    if lab_credits < required_credits:
+    if lab_credits < required_creditss:
         print(f"Access denied. Insufficient credits. You need {required_credits - lab_credits} more credits.")
 
 
