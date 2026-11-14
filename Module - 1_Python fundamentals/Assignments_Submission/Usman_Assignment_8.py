@@ -142,4 +142,183 @@ print(file_name1[ln:])
 # Count vowels and consonants separately.
 # Count digits and spaces separately.
 # Count uppercase and lowercase letters separately.
-# Print all six counts with clear labels. Ignore symbols when counting consonants.
+# Print all six counts with clear labels.
+# Ignore symbols when counting consonants.
+
+consonant_cnt=0
+num_cnt=0
+vowel_cnt=0
+space_cnt=0
+ascii_cnt=0
+other_cnt=0
+vowels =['a','e','i','o','u','A','E','I','O','U']
+user_message=input('please enter a message:')
+ln=len(user_message)
+for i in user_message:
+    if i.isalpha() and i not in vowels:
+        consonant_cnt+= 1
+    elif i.isalpha() and i in vowels:
+        vowel_cnt+=1
+    elif i.isnumeric():
+        num_cnt+=1
+    elif i.isspace():
+       space_cnt+=1
+    elif i.isascii():
+        ascii_cnt+=1
+else:other_cnt+=1
+print(consonant_cnt)
+print(vowel_cnt)
+print(num_cnt)
+print(space_cnt)
+print(ascii_cnt)
+print(other_cnt)
+
+# QUESTION 09:Normalize the note to lowercase for case-insensitive checking.
+# Check whether the word "error" exists.
+# Count how many times "error" appears.
+# Find the position of the first occurrence of "error".
+# Replace every occurrence of "oldservice" with "newservice" and print the updated note
+
+# QUESTION 10:Remove extra outer spaces from the URL.
+# Check whether it starts with "https://".
+# Check whether it contains the word "login".
+# Check whether it ends with "/login" or "/signin".
+# Print the URL in lowercase and print its total length.
+
+user_url=input('please enter the URL to validate:')
+user_url.strip()
+if 'login' in user_url or user_url.endswith(['/login','/signin']):
+    print('URL is a valid login page:',user_url.lower())
+# QUESTION 11:Take a username, remove outer spaces and
+# convert it to lowercase.
+# Check that its length is at least 5 characters.
+# Check that it is not one of these reserved values:
+# admin, root, system.
+# Use isalnum() to check whether it contains only letters and digits.
+# Print a separate failure reason for every rule that the username violates;
+# otherwise print "Username
+# Accepted"
+
+username = input("Enter your username: ")
+username = username.strip().lower()
+username_valid = False
+if len(username) >= 5 and username not in ["admin", "root", "system"] and username.isalnum():
+    username_valid = True
+else:
+    username_valid = False
+if username_valid == True:
+    print('username Accepted:')
+else:
+    print('username Rejected:')
+
+# QUESTION 12:Take a password and verify that its length is at least 8.
+# Loop through the password and detect whether at least one uppercase letter exists.
+# Detect whether at least one lowercase letter and at least one digit exist.
+# Detect whether at least one of these special characters exists: @, #, $, !.
+# Print "Strong Password" only when every rule passes;
+# otherwise print which requirements are missing
+password = input("Enter your password: ")
+has_uppercase = False
+has_lowercase = False
+has_digits = False
+has_special = False
+
+for i in password:
+    if i.isupper():
+        has_uppercase = True
+    elif i.islower():
+        has_lowercase = True
+    elif i.isdigit():
+        has_digits = True
+    elif i in "@#$!":
+        has_special = True
+
+if (len(password) >= 8 and has_uppercase and has_lowercase
+        and has_digits and has_special):
+    password_valid = True
+else:
+    password_valid = False
+if password_valid == False and len(password) < 8:
+    print('password is not valid Length should be 8 or above:')
+elif password_valid ==False and has_uppercase==False:
+    print('password is not valid should have atleast one uppercase letter')
+elif password_valid == False and has_lowercase==False:
+    print('password is not valid should have atleast one lowercase letter')
+elif password_valid ==False and has_digits==False:
+    print('password is not valid should have atleast one digit')
+elif password_valid == False and has_special==False:
+    print('password is not valid should have atleast one special character')
+else: print('password is  valid:')
+
+# # QUESTION 14:Take the comma-separated profile string from the user.
+# Use split(",") to separate the values.
+# Print the first item as Name and the second item as City.
+# Print the third item as Skill and the fourth item as Level.
+# Print how many characters are present in the original profile string and whether the word "Python" exists in it
+
+
+# QUESTION 14:Full name: strip outer spaces, convert to title case, and ensure it is not blank or only spaces.
+# Username: lowercase it, require at least 5 characters, reject admin/root/system, and require letters/digits
+# only.
+# Email: lowercase it, require @ and ., print the username part before @, and check whether it ends with
+# gmail.com.
+# Password: require at least 8 characters and detect uppercase, lowercase, digit and one special character
+# from @ # $ ! using a loop.
+# Print a clear summary showing the normalized values and whether each field passed or failed
+
+
+full_name = input("Enter your full name: ")
+full_name = full_name.strip()
+
+full_name = full_name.title()
+
+if full_name != "":
+    name_valid = True
+else:
+    name_valid = False
+
+
+username = input("Enter your username: ")
+username = username.strip().lower()
+
+if len(username) >= 5 and username not in ["admin", "root", "system"] and username.isalnum():
+    username_valid = True
+else:
+    name_valid = False
+
+email = input("Enter your email address: ")
+email = email.strip().lower()
+if "@" in email and "." in email:
+    email_valid = True
+
+    at_positon = email.find("@")
+    email_username = email[:at_positon]
+else:
+    email_valid = False
+    email_username = "Not available"
+
+if email.endswith("@gmail.com"):
+    gmail_account = True
+else:
+    gmail_account = False
+
+password = input("Enter your password: ")
+has_uppercase = False
+has_lowercase = False
+has_digits = False
+has_special = False
+
+for i in password:
+    if i.isupper():
+        has_uppercase = True
+    elif i.islower():
+        has_lowercase = True
+    elif i.isdigit():
+        has_digits = True
+    elif i in "@#$!":
+        has_special = True
+
+if len(password) >= 8 and has_uppercase and has_lowercase and has_digits and has_special:
+    password_valid = True
+else:
+    password_valid = False
