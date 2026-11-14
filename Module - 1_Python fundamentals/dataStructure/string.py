@@ -119,6 +119,75 @@
 #         At least one digit
 #         At least one special character
 
+# q14
+
+full_name = input("Enter your full name: ")
+full_name = full_name.strip()
+
+full_name = full_name.title()
+
+if full_name != "":
+    name_valid = True
+else:
+    name_valid = False
+
+username = input("Enter your username: ")
+username = username.strip().lower()
+
+if len(username) >= 5 and username not in ["admin", "root", "system"] and username.isalnum():
+    username_valid = True
+else:
+    name_valid = False
+
+email = input("Enter your email address: ")
+email = email.strip().lower()
+if "@" in email and "." in email:
+    email_valid = True
+
+    at_positon = email.find("@")
+    email_username = email[:at_positon]
+else:
+    email_valid = False
+    email_username = "Not available"
+
+if email.endswith("@gmail.com"):
+    gmail_account = True
+else:
+    gmail_account = False
+
+password = input("Enter your password: ")
+has_uppercase = False
+has_lowercase = False
+has_digits = False
+has_special = False
+
+for i in password:
+    if i.isupper():
+        has_uppercase = True
+    elif i.islower():
+        has_lowercase = True
+    elif i.isdigit():
+        has_digits = True
+    elif i in "@#$!":
+        has_special = True
+
+if len(password) >= 8 and has_uppercase and has_lowercase and has_digits and has_special:
+    password_valid = True
+else:
+    password_valid = False
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
