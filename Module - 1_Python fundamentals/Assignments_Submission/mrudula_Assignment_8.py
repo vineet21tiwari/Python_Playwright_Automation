@@ -117,3 +117,182 @@ else:
 
 # Count how many times @ appears
 print(email.count("@"))
+
+
+#===================================7.File Upload Gatekeeper=================================
+#An automation test must validate whether a selected file is an allowed document before upload.
+#Your program must:
+#a.Take a file name and normalize it to lowercase.
+file_name=input("Enter file name: ")
+normalize_name=file_name.strip().lower()
+print(normalize_name)
+#b.Accept the file only if it ends with .pdf, .docx or .xlsx.
+if normalize_name.endswith((".mp4",".pdf",".docx",".xlsx")):
+    print("Filename Accepted")
+else:
+    print("Filename Rejected")
+#c.Print whether the name contains the word "report".
+if "report" in normalize_name:
+    print("Filename has a word called report")
+else:
+    print("Filename has NO word called report")
+#d.Replace spaces in the file name with underscores and print the cleaned file
+clean_file= normalize_name.replace("","_")
+print("Filename Replaced with Underscore",clean_file)
+# e.Print the last four characters of the cleaned file name using slicing
+print(normalize_name[-4:])
+
+
+
+
+
+
+#==============================8.Support Message Character Report==================================
+#A support chatbot receives a message and the QA team wants a character-level report.
+# #Your program must:
+# a.Loop through every character in the message.
+message="This is Mrudula Mutyala Learning Playwright with Python"
+vowel_count=0
+cons_count=0
+digit_count=0
+space_count=0
+uppercase_count=0
+lowercase_count=0
+for i in message:
+    print(i,end=" ")
+# b.Count vowels and consonants separately.
+    if i.isalpha():
+        if i.lower() in "aeiou":
+            vowel_count+=1
+        else:
+            cons_count+=1
+# c.Count digits and spaces separately.
+    if i.isdigit():
+        digit_count+=1
+    if i.isspace():
+        space_count+=1
+# d.Count uppercase and lowercase letters separately.
+    if i.isupper():
+        uppercase_count+=1
+    if i.islower():
+        lowercase_count+=1
+
+# e.Print all six counts with clear labels. Ignore symbols when counting consonants
+print("Vowel Count:",vowel_count)
+print("Consonant count",cons_count)
+print("Digit Count",digit_count)
+print("Space Count:",space_count)
+print("Uppercase Count:",uppercase_count)
+print("Lowercase Count",lowercase_count)
+
+
+
+
+#=========================9.Incident Keyword Scanner============================================================
+#An incident note may contain repeated words such as "error" and an old service name that needs to be replaced.
+#Your program must:
+#a.Normalize the note to lowercase for case-insensitive checking.
+note="This is note that contains error multiple time error Error ERROR ErrOR with oldservice"
+normalize_note=note.strip().lower()
+print(normalize_note)
+# b.Check whether the word "error" exists.
+if "error" in normalize_note:
+    print("Note contains a word called Error")
+else:
+    print("Note does not contains a word called Error")
+# c.Count how many times "error" appears.
+print(normalize_note.count("error"))
+# d.Find the position of the first occurrence of "error".
+print(normalize_note.find("error"))
+# e.Replace every occurrence of "oldservice" with "newservice" and print the updated note.
+print(normalize_note.replace("oldservice","newservice"))
+
+
+#============================10.Secure URL Checker====================================================
+#A browser automation suite receives URLs from test data and should reject obviously invalid endpoints.
+#Your program must:
+# a.Remove extra outer spaces from the URL.
+url="    http://C:/Users/hello/PycharmProjects/Python_Playwright_Automation/Module%20-%201_Python%20fundamentals/Assignments/login    "
+clean_url=url.strip()
+print(clean_url)
+# b.Check whether it starts with "https://".
+if clean_url.startswith("http"):
+    print("URL starts with http")
+else:
+    print("URL does not start with http")
+# c.Check whether it contains the word "login".
+if "login" in clean_url:
+    print("URL contains login")
+else:
+    print("URL does not contain login")
+# d.Check whether it ends with "/login" or "/signin".
+if clean_url.endswith("/login") or clean_url.endswith("/signin"):
+    print("URL ends with login/signin")
+else:
+    print("URL does not ends with login/signin")
+# e.Print the URL in lowercase and print its total length
+lowercase_url=clean_url.lower()
+print(lowercase_url)
+print(len(lowercase_url))
+
+
+#==============================11.Username Quality Check===================================
+#A website requires usernames that are easy to store and validate.
+# Your program must:
+# a.Take a username, remove outer spaces and convert it to lowercase.
+username="               MrudulaMutyala_system2026              "
+clean_username=username.strip()
+print(clean_username)
+print(clean_username.lower())
+# b.Check that its length is at least 5 characters.
+if len(clean_username)>=5:
+    print("Username contains atleast 5 characters:",len(clean_username))
+else:
+    print("Username does not contain atleast 5 characters:",len(clean_username))
+# c.Check that it is not one of these reserved values: admin, root, system.
+if "admin" in clean_username or "root" in clean_username or "system"  in clean_username:
+    print("Username does contains values: admin, root, system.")
+else:
+    print("Username does not contains values: admin, root, system.")
+# d.Use isalnum() to check whether it contains only letters and digits.
+if clean_username.isalnum():
+    print("Username does contains alphanum characters:",clean_username)
+else:
+    print("Username does not contain alphanum characters:",len(clean_username))
+# e.Print a separate failure reason for every rule that the username violates; otherwise print "Username Accepted"
+if len(clean_username)>=5 and "admin" not in clean_username and "root" not in clean_username and "system" not in clean_username and clean_username.isalnum():
+    print("Username Accepted",clean_username)
+else:
+    print("Username Rejected",clean_username)
+
+
+
+
+
+#==========================12.Password Strength Inspector======================Need to WORK
+#A registration screen needs a basic password-strength check. Do not use regular expressions.
+# Your program must:
+# a.Take a password and verify that its length is at least 8.
+password="TestPython123$"
+if len(password)>=8:
+    print("Password is longer than 8 characters:",len(password))
+else:
+    print("Password is shorter than 8 characters:",len(password))
+# b.Loop through the password and detect whether at least one uppercase letter exists.
+for char in password:
+    if char.isupper():
+        print("Password contains uppercase characters")
+    else:
+        print("Password does not contain uppercase characters:",password)
+# c.Detect whether at least one lowercase letter and at least one digit exist.
+    if char.lower() and char.isdigit():
+        print("Password contains lowercase and digits")
+    else:
+        print("Password does not contain lowercase and digits:",password)
+# d.Detect whether at least one of these special characters exists: @, #, $, !.
+    if char.isascii():
+        print("Password contains ASCII characters")
+    else:
+        print("Password does not contain ASCII characters:",password)
+# e.Print "Strong Password" only when every rule passes; otherwise print which requirements are missing
+    print("Strong Password")
