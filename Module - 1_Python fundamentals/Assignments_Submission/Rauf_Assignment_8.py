@@ -55,17 +55,22 @@ print("Length before cleaning:", len(name))
 print("Length after cleaning:", len(cleaned_name))
 print("Contains only alphabetic characters:", cleaned_name.isalpha())
 
-#8.6
+#8.6email = input("Enter your email: ").strip().lower()
+
 email = input("Enter your email: ").strip().lower()
+
 if "@" in email and "." in email:
     at_position = email.find("@")
     username = email[:at_position]
-    ends_with_gmail = email.endswith("gmail.com")
+    ends_with_gmail = email.endswith("@gmail.com")
     at_count = email.count("@")
-print("Username:", username)
-print("Position of '@':", at_position)
-print("Ends with 'gmail.com':", ends_with_gmail)
-print(f"Count of '@': {at_count}")
+
+    print("Username:", username)
+    print("Position of '@':", at_position)
+    print("Ends with 'gmail.com':", ends_with_gmail)
+    print(f"Count of '@': {at_count}")
+else:
+    print("Invalid email: must contain '@' and '.'")
 
 #8.7
 File_name = input("Enter the file name: ").strip().lower()
@@ -122,13 +127,16 @@ if "error" in incident_note:
     print("Updated note:", updated_note)
 #8.10
 url = input("Enter the URL: ").strip()
-if url.startswith("https://"):
-    contains_login = "login" in url
-    print("Contains 'login':", contains_login)
-    ends_with_login_or_signin = url.endswith(("/login", "/signin"))
-print("URL in lowercase:", url.lower())
-print("Total length of URL:", len(url))
+url_lower = url.lower()
 
+is_https = url_lower.startswith("https://")
+contains_login = "login" in url_lower
+ends_with_login_or_signin = url_lower.endswith(("/login", "/signin"))
+
+print("Starts with 'https://':", is_https)
+print("Contains 'login':", contains_login)
+print("URL in lowercase:", url_lower)
+print("Total length of URL:", len(url))
 print("Ends with '/login' or '/signin':", ends_with_login_or_signin)
 
 #8.11
@@ -142,22 +150,15 @@ if not username.isalnum():
 print("Username Accepted") if len(username) >= 5 and username not in ["admin", "root", "system"] and username.isalnum() else print("Username Rejected")
 
 #8.12
-password = input("Enter a password: ")
-length_check = len(password) >= 8
-uppercase_check = False
-lowercase_check = False
-digit_check = False
-special_char_check = False
+import string
 
-for char in password:
-    if char.isupper():
-        uppercase_check = True
-    if char.islower():
-        lowercase_check = True
-    if char.isdigit():
-        digit_check = True
-    if char in "@#$!":
-        special_char_check = True
+password = input("Enter a password: ")
+
+length_check = len(password) >= 8
+uppercase_check = any(c.isupper() for c in password)
+lowercase_check = any(c.islower() for c in password)
+digit_check = any(c.isdigit() for c in password)
+special_char_check = any(c in string.punctuation for c in password)
 
 if length_check and uppercase_check and lowercase_check and digit_check and special_char_check:
     print("Strong Password")
@@ -171,8 +172,7 @@ else:
     if not digit_check:
         print("Password must contain at least one digit.")
     if not special_char_check:
-        print("Password must contain at least one of these special characters: @, #, $, !.")
-    #8.13
+        print("Password must contain at least one special character (e.g. @, #, $, !, _).")    #8.13
     test_data = input("Enter the profile string (comma-separated): ")
     profile_parts = test_data.split(",")
 
