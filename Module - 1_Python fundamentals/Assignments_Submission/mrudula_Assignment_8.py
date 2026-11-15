@@ -273,7 +273,11 @@ else:
 #A registration screen needs a basic password-strength check. Do not use regular expressions.
 # Your program must:
 # a.Take a password and verify that its length is at least 8.
-password="TestPython123$"
+password="TestPython123@"
+uppercase_found=False
+lowercase_found= False
+digit_found=False
+special_found=False
 if len(password)>=8:
     print("Password is longer than 8 characters:",len(password))
 else:
@@ -281,18 +285,110 @@ else:
 # b.Loop through the password and detect whether at least one uppercase letter exists.
 for char in password:
     if char.isupper():
-        print("Password contains uppercase characters")
-    else:
-        print("Password does not contain uppercase characters:",password)
+        uppercase_found= True
 # c.Detect whether at least one lowercase letter and at least one digit exist.
-    if char.lower() and char.isdigit():
-        print("Password contains lowercase and digits")
-    else:
-        print("Password does not contain lowercase and digits:",password)
+    if char.islower():
+        lowercase_found= True
+
+    if char.isdigit():
+        digit_found= True
 # d.Detect whether at least one of these special characters exists: @, #, $, !.
-    if char.isascii():
-        print("Password contains ASCII characters")
-    else:
-        print("Password does not contain ASCII characters:",password)
+    if char in ("@","#","$","!"):
+        special_found= True
 # e.Print "Strong Password" only when every rule passes; otherwise print which requirements are missing
+if uppercase_found==True and lowercase_found==True and digit_found==True and special_found==True:
     print("Strong Password")
+else:
+    print("requirements are missing")
+
+
+
+
+#================================13.CSV Profile Reader==============================
+#A small test-data line arrives as "Vineet,Hyderabad,Python,Senior". You need to break it into meaningful values.
+#Your program must:
+# a.Take the comma-separated profile string from the user.
+profile_string = "Mrudula,Hopkinton,Python,Experienced"
+# b.Use split(",") to separate the values.
+profile= profile_string.split(",")
+# c.Print the first item as Name and the second item as City.
+print("name:",profile[0])
+print("City:",profile[1])
+# d.Print the third item as Skill and the fourth item as Level.
+print("Skill:",profile[2])
+print("Level:",profile[3])
+# e.Print how many characters are present in the original profile string and whether the word "Python" exists in it
+print("Length of original profile string:",len(profile_string))
+print("Length of original profile string:",len(profile))
+if "Python" in profile:
+    print("Python exists in Profile String")
+else:
+    print("Python not in Profile String")
+
+
+
+
+
+
+
+#===================================14.Final Registration Text Validator===============================
+#Build a single console program for a registration screen. It should validate full name, username, email and password using the string concepts from this assignment.
+#Your program must:
+# a.Full name: strip outer spaces, convert to title case, and ensure it is not blank or only spaces.
+full_name= "                       mrudula Mutyala                         "
+clean_name= full_name.strip().title()
+print("Full name:",clean_name)
+if clean_name== "":
+    print("fullName cant be blank:",clean_name)
+else:
+    print("fullName is:",clean_name)
+# b.Username: lowercase it, require at least 5 characters, reject admin/root/system, and require letters/digits only.
+username="MrudulaMutyala_system2026"
+print("Username:",username.lower())
+if len(username)>=5:
+    print("Username contains atleast 5 characters:",len(username))
+else:
+    print("Username does not contain atleast 5 characters:",len(username))
+if "admin" in username or "root" in username or "system" in username:
+    print("Username should NOT contains values: admin, root, system.")
+else:
+    print("Username:",username)
+if username.isalnum():
+    print("Username Contain alphanum characters:",username)
+else:
+    print("Username does not contain alphanum characters:",username)
+# c.Email: lowercase it, require @ and ., print the username part before @, and check whether it ends with gmail.com.
+email="Mrudula.Mutyala@gmail.com"
+print("Email:",email.lower())
+if "@" in email and "." in email:
+    print("Email address contain dot  and @ characters:",email)
+else:
+    print("Email address does not contain dot and  @ characters:",email)
+email_position=email.find("@")
+print("Email Username",email[:email_position])
+if email.endswith("gmail.com"):
+    print("Email address ends with gmail.com",email)
+else:
+    print("Email address does not end with gmail.com")
+# d.Password: require at least 8 characters and detect uppercase, lowercase, digit and one special character from @ # $ ! using a loop.
+password="Password0987!^"
+uppercase_found=False
+lowercase_found=False
+digit_found=False
+special_found=False
+if len(password)>=8:
+    print("Password is longer than 8 characters:",len(password))
+for char in password:
+    if char.isupper():
+        uppercase_found= True
+    if char.islower():
+        lowercase_found= True
+    if char.isdigit():
+        digit_found= True
+    if char in ("@","#","$","!"):
+        special_found= True
+# e.Print a clear summary showing the normalized values and whether each field passed or failed
+if uppercase_found==True and lowercase_found==True and digit_found==True and special_found==True:
+    print("Password Requirement Passed")
+else:
+    print("Password Requirement Rejected")
