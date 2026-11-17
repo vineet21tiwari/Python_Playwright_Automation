@@ -187,6 +187,121 @@ for mark in marks:
     if mark>average:
         print("Mark",mark)
 
+#=============================10.Transaction Cleaner===========================
+#A payment system receives transaction values where negative numbers are invalid and zero means no payment.
+#Your program must:
+# a.Use transactions = [1200, -500, 2300, 0, 850, -100, 3000].
+transactions = [1200, -500, 2300, 0, 850, -100, 3000]
+count=0
+valid_sales=0
+# b.Loop through the list and skip negative values using continue.
+for transaction in transactions:
+    if transaction<=0:
+        continue
+    valid_sales+=transaction
+    count+=1
+# c.Ignore zero values as well.
+# d.Calculate total valid sales and count valid transactions.
+# e.Print the largest valid transaction without including invalid values
+print("Maximum Transaction",max(transactions))
+print("Valid Sales",valid_sales)
+print("Total count of Transactions",count)
+
+# =======================11.Number Lab============================
+# A data exercise stores mixed positive and negative integers and asks for several classifications in one pass.
+# Your program must:
+# a.Use numbers = [12, -5, 7, 20, -8, 15, 0, 18, 25].
+numbers = [12, -5, 7, 20, -8, 15, 0, 18, 25]
+# b.Count even and odd numbers, excluding zero from the odd count.
+even_num = 0
+odd_num = 0
+positive_num = 0
+negative_num = 0
+sum_of_5 = 0
+for num in numbers:
+    if num % 2 == 0:
+        even_num += 1
+    else:
+        odd_num += 1
+    # c.Count positive and negative numbers.
+    if num > 0:
+        positive_num += 1
+    elif num < 0:
+        negative_num += 1
+    # d.Calculate the sum of numbers divisible by 5.
+    if num % 5 == 0:
+        sum_of_5 += num
+
+    # e.Print only the positive even numbers
+    if num > 0 and num % 2 == 0:
+        print("Number", num, "is positive and it is even number:", num)
+print("Even:", even_num)
+print("Odd:", odd_num)
+print("Positive:", positive_num)
+print("Negative:", negative_num)
+print("Sum divisible by 5:", sum_of_5)
+
+#=============================12.Search and Stop==================================================
+#A warehouse scans product IDs in order and wants to stop scanning as soon as the requested ID is found.
+#Your program must:
+# a.Create a list of at least eight numeric product IDs.
+product_id=[12,34,56,67,89,68,45,23]
+# b.Take a product ID to search from the user.
+user_id = int(input("Enter User ID:"))
+product_found=False
+# c.Use for i in range(len(list)) so you can access both index and value.
+for i in range(len(product_id)):
+    if product_id[i]==user_id:
+# d.When the ID is found, print its index and stop immediately using break.
+        print("Product ID:",product_id[i])
+        print("index",i)
+        break
+    else:
+        # e.If it is not found, print a clear "Product not found" message
+        print("Product not found")
+
+
+# ===========================13.Five-Item Price Collector==============================================
+# A billing program asks the cashier to enter five product prices and stores them for later analysis.
+# Your program must:
+# a.Start with an empty prices list.
+price_list = []
+total_price = 0
+average_price=0
+product_cost=0
+# b.Use a for loop to take exactly five prices from the user and append each one.
+for price in range(5):
+    price = int(input("price:"))
+    price_list.append(price)
+    total_price += price
+    average_price = total_price/5
+# c.Print the completed list, total and average price.
+print(price_list)
+print(total_price)
+print(average_price)
+# d.Print the highest and lowest price.
+print(max(price_list))
+print(min(price_list))
+# e.Count how many products cost more than the average
+for price in price_list:
+    if price > average_price:
+        product_cost += 1
+print(product_cost)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
