@@ -329,3 +329,42 @@ ebrolld_only_python=set(python).difference(sql)
 print(ebrolld_only_python)
 print('total unique students across the two courses:',set(python).union(set(sql)))
 print(sorted(set(both_courses)),len(sorted(set(both_courses))))
+
+# QUESTION 21:Use foods = ["Pizza", "Burger", "Pizza", "Pasta", "Burger", "Dosa"].
+# Convert the list into a set and print all unique food choices.
+# Loop through the set and use list.count() to
+# print how many votes each food received.
+# Print the number of unique food choices
+
+foods = ["Pizza", "Burger", "Pizza", "Pasta", "Burger", "Dosa"]
+i=0
+unq_foods=set(foods)
+print(sorted(unq_foods),len(sorted(unq_foods)))
+for food in foods:
+    i=foods.count(food)
+    print(food,i)
+
+# QUESTION 22:Use requests = ["aman", "admin", "priya", "root", "neha"] and blocked =
+# {"admin", "root", "system"}.
+# Loop through requests and append only usernames not present in blocked.
+# Print accepted usernames.
+# Convert accepted to a set and print its unique count
+
+requests = ["aman", "admin", "priya", "root", "neha"]
+valid_requests =[]
+blocked = {"admin", "root", "system"}
+for request in requests:
+    if request not in blocked:
+        valid_requests.append(request)
+print(valid_requests)
+
+# QUESTION 23:Use football = ["Aman", "Rahul", "Priya", "Aman"] and basketball = ["Priya",
+# "Karan", "Rohit", "Rahul"].
+# Find students selected for both sports.
+# Find students selected for exactly one sport.
+# Convert all unique selected students into a sorted list
+
+football = ["Aman", "Rahul", "Priya", "Aman"]
+basketball = ["Priya", "Karan", "Rohit", "Rahul"]
+
+
